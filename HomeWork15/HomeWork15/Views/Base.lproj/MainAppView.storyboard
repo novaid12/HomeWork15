@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="523" y="-466"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--MainVC-->
         <scene sceneID="vFI-HP-2gR">
             <objects>
-                <tabBarController storyboardIdentifier="MainVC" id="qXm-i8-lSc" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainVC" id="qXm-i8-lSc" customClass="MainVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GzK-zC-Ht6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

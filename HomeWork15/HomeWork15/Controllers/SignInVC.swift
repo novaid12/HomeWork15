@@ -49,9 +49,8 @@ class SignInVC: BaseViewController {
     @IBAction func signInActionBtn(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         let signInModel = userDefaults.array(forKey: emailTF.text ?? "") as? [String] ?? []
-        if passTF.text == signInModel[1]
-        {
-            
+        if passTF.text == signInModel[1] {
+            performSegue(withIdentifier: "goToMainVC", sender: nil)
         }
     }
     /*
