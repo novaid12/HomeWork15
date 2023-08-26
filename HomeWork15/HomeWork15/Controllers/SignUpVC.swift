@@ -15,22 +15,33 @@ class SignUpVC: BaseViewController {
     @IBOutlet var nameTF: UITextField!
     /// password
     @IBOutlet var passwordTF: UITextField!
+    @IBOutlet var switchVisiblePass: UISwitch!
     @IBOutlet var errorPassLbl: UILabel!
     /// strongPassIndicators
     @IBOutlet var strongPassIndicatorsViews: [UIView]!
     /// confPass
     @IBOutlet var confPassTF: UITextField!
+    @IBOutlet var cofirmVisiblePass: UISwitch!
     @IBOutlet var errorConfPassLbl: UILabel!
     /// continueBtn
     @IBOutlet var continueBtn: UIButton!
     /// scrollView
     @IBOutlet var scrollView: UIScrollView!
 
+    private var isValidEmail = false { didSet { updateContinueBtnState() } }
+    private var isConfPass = false { didSet { updateContinueBtnState() } }
+    private var passwordStrength: PasswordStrength = .veryWeak { didSet { updateContinueBtnState() } }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         strongPassIndicatorsViews.forEach { view in view.alpha = 0.2 }
         hideKeyboardWhenTappedAround()
         startKeyboardObserver()
+        continueBtn.isEnabled = true
+    }
+
+    private func updateContinueBtnState() {
+        continueBtn.isEnabled = isValidEmail && isConfPass && passwordStrength != .veryWeak
     }
 
     private func startKeyboardObserver() {
@@ -53,13 +64,89 @@ class SignUpVC: BaseViewController {
         scrollView.scrollIndicatorInsets = contentInsets
     }
 
-    /*
-     // MARK: - Navigation
+    @IBAction func backSignInBtn() {
+        navigationController?.popViewController(animated: true)
+    }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func emailActionTF(_ sender: UITextField) {
+        if let email = sender.text,
+           !email.isEmpty,
+           VerificationService.isValidEmail(email: email)
+        {
+            isValidEmail = true
+            errorEmailLbl.isHidden = false
+            errorEmailLbl.text = "Email is Valid!"
+            errorEmailLbl.textColor = .green
+        } else {
+            isValidEmail = false
+            errorEmailLbl.isHidden = false
+            errorEmailLbl.text = "Error: bad email"
+            errorEmailLbl.textColor = .red
+        }
+    }
+
+    private func setupStrongIndicatorsViews() {
+        strongPassIndicatorsViews.enumerated().forEach { index, view in
+            if index <= (passwordStrength.rawValue - 1) {
+                view.alpha = 1
+            } else {
+                view.alpha = 0.2
+            }
+        }
+    }
+
+    @IBAction func passActionTF(_ sender: UITextField) {
+        if let passText = sender.text,
+           !passText.isEmpty
+        {
+            passwordStrength = VerificationService.isValidPassword(pass: passText)
+            print(passwordStrength)
+        } else {
+            passwordStrength = .veryWeak
+        }
+        errorPassLbl.isHidden = passwordStrength != .veryWeak
+
+        setupStrongIndicatorsViews()
+    }
+
+    @IBAction func visiblePassAction(_ sender: UISwitch) {
+        if sender.isOn {
+            passwordTF.isSecureTextEntry = true
+        } else { passwordTF.isSecureTextEntry = false }
+    }
+
+    @IBAction func cofirmPassActionTF(_ sender: UITextField) {
+        if let confPassText = sender.text,
+           !confPassText.isEmpty,
+           let passText = passwordTF.text,
+           !passText.isEmpty
+        {
+            isConfPass = VerificationService.isPassConfirm(pass1: passText, pass2: confPassText)
+
+        } else {
+            isConfPass = false
+        }
+        errorConfPassLbl.isHidden = isConfPass
+    }
+
+    @IBAction func cofirmPassVisibleAction(_ sender: UISwitch) {
+        if sender.isOn {
+            confPassTF.isSecureTextEntry = true
+        } else { confPassTF.isSecureTextEntry = false }
+    }
+
+    @IBAction func continueActionTF(_ sender: UIButton) {
+        if let email = emailTF.text,
+           let pass = passwordTF.text
+        {
+            let userModel = UserModel(name: nameTF.text, email: email, pass: pass)
+            performSegue(withIdentifier: "goToVerifScreen", sender: userModel)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destVC = segue.destination as? VerificationsVC,
+              let userModel = sender as? UserModel else { return }
+        destVC.userModel = userModel
+    }
 }
