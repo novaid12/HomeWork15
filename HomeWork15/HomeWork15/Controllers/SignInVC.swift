@@ -24,7 +24,7 @@ class SignInVC: BaseViewController {
     }
 
     private func setupUI() {
-        signInBtn.isEnabled = false
+//        signInBtn.isEnabled = false
         errorLbl.isHidden = true
     }
 
@@ -49,17 +49,22 @@ class SignInVC: BaseViewController {
     @IBAction func signInActionBtn(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         let signInModel = userDefaults.array(forKey: emailTF.text ?? "") as? [String] ?? []
-        if passTF.text == signInModel[1] {
-            performSegue(withIdentifier: "goToMainVC", sender: nil)
-        }
-    }
-    /*
-     // MARK: - Navigation
+        if signInModel != [], passTF.text == signInModel[1] {
+            let userModel = UserModel(name: signInModel[0], email: emailTF.text ?? "", pass: signInModel[1])
+            let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+            guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
+            guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+            mainVC.userModel = userModel
+            profileVC.userModel = userModel
+            show(mainVC, sender: nil)
+        } else { errorLbl.isHidden = false }
+    }
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+//        guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
+//        guard let userModel = sender as? UserModel else { return }
+//        mainVC.userModel = userModel
+//    }
 }

@@ -11,7 +11,7 @@
         <!--Profile-->
         <scene sceneID="lKM-bD-Vos">
             <objects>
-                <viewController id="sAY-hl-bHK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sAY-hl-bHK" customClass="ProfileVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbR-br-qdq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,23 +27,35 @@
         <!--Main-->
         <scene sceneID="vH0-YM-k7Q">
             <objects>
-                <viewController id="zYY-2E-wvB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zYY-2E-wvB" customClass="MainVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G5S-uL-ENR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH9-8p-NQC">
+                                <rect key="frame" x="175" y="325" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1yO-dD-SaK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="doc.richtext" catalog="system" id="Mru-8P-SjU"/>
+                    <connections>
+                        <outlet property="lbl" destination="vH9-8p-NQC" id="xss-gA-lNX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dj-p5-RiP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="523" y="-466"/>
+            <point key="canvasLocation" x="312" y="-487"/>
         </scene>
-        <!--MainVC-->
+        <!--Tab Bar Controller-->
         <scene sceneID="vFI-HP-2gR">
             <objects>
-                <tabBarController storyboardIdentifier="MainVC" id="qXm-i8-lSc" customClass="MainVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="qXm-i8-lSc" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GzK-zC-Ht6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
