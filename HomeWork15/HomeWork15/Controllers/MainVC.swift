@@ -10,21 +10,31 @@ import UIKit
 class MainVC: BaseViewController {
     var userModel: UserModel?
 
-    @IBOutlet var lbl: UILabel!
-
+    @IBOutlet var profileBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        // Do any additional setup after loading the view.
+        profileBtn.setTitle("Hello, \(userModel?.name ?? "Unknown")", for: .normal)
+//        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+//        guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
+//        guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
+//        mainVC.userModel = userModel
+//        profileVC.userModel = userModel
+//        show(mainVC, sender: nil)
     }
 
-    /*
-     // MARK: - Navigation
+    @IBAction func goToProfileVC(_ sender: UIButton) {
+//        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+//        guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
+//        profileVC.userModel = userModel
+//        show(profileVC, sender: nil)
+        performSegue(withIdentifier: "goToProfileSegue", sender: userModel)
+    }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
+         guard let destVC = segue.destination as? ProfileVC,
+               let userModel = sender as? UserModel else { return }
+         destVC.userModel = userModel
      }
-     */
+
 }

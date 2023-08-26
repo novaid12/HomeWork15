@@ -24,7 +24,7 @@ class SignInVC: BaseViewController {
     }
 
     private func setupUI() {
-//        signInBtn.isEnabled = false
+        signInBtn.isEnabled = false
         errorLbl.isHidden = true
     }
 
@@ -46,6 +46,11 @@ class SignInVC: BaseViewController {
         }
     }
 
+    @IBAction func visibleActionSW(_ sender: UISwitch) {
+        if sender.isOn {
+            passTF.isSecureTextEntry = true
+        } else { passTF.isSecureTextEntry = false }
+    }
     @IBAction func signInActionBtn(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         let signInModel = userDefaults.array(forKey: emailTF.text ?? "") as? [String] ?? []
@@ -53,10 +58,7 @@ class SignInVC: BaseViewController {
             let userModel = UserModel(name: signInModel[0], email: emailTF.text ?? "", pass: signInModel[1])
             let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
             guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-            guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
-
             mainVC.userModel = userModel
-            profileVC.userModel = userModel
             show(mainVC, sender: nil)
         } else { errorLbl.isHidden = false }
     }
