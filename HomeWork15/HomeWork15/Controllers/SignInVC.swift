@@ -14,6 +14,7 @@ class SignInVC: BaseViewController {
     @IBOutlet var errorLbl: UILabel!
     @IBOutlet var signInBtn: UIButton!
 
+    @IBOutlet var centerYConstraint: NSLayoutConstraint!
     private var isValidEmail = false { didSet { updateSignInBtnState() } }
     private var isValidPass = false { didSet { updateSignInBtnState() } }
 
@@ -21,17 +22,20 @@ class SignInVC: BaseViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setupUI()
+        emailTF.text = nil
+        passTF.text = nil
     }
 
     private func setupUI() {
         signInBtn.isEnabled = false
         errorLbl.isHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
 
     private func updateSignInBtnState() {
         if emailTF.text != "", passTF.text != "" {
             signInBtn.isEnabled = true
-        }
+        } else { signInBtn.isEnabled = false }
     }
 
     @IBAction func emailActionTF(_ sender: UITextField) {
@@ -51,6 +55,7 @@ class SignInVC: BaseViewController {
             passTF.isSecureTextEntry = true
         } else { passTF.isSecureTextEntry = false }
     }
+
     @IBAction func signInActionBtn(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         let signInModel = userDefaults.array(forKey: emailTF.text ?? "") as? [String] ?? []
@@ -62,11 +67,4 @@ class SignInVC: BaseViewController {
             show(mainVC, sender: nil)
         } else { errorLbl.isHidden = false }
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
-//        guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-//        guard let userModel = sender as? UserModel else { return }
-//        mainVC.userModel = userModel
-//    }
 }

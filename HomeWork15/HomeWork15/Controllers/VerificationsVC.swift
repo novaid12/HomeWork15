@@ -53,12 +53,12 @@ class VerificationsVC: BaseViewController {
     
     @objc private func keyboardWillShow(notification: Notification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        centerYConstraint.constant -= keyboardSize.height / 2
+        centerYConstraint.constant -= keyboardSize.height / 4
     }
     
     @objc private func keyboardWillHide(notification: Notification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        centerYConstraint.constant += keyboardSize.height / 2
+        centerYConstraint.constant += keyboardSize.height / 4
     }
     
     private func setupUI() {

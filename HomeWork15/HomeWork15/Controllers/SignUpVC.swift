@@ -119,14 +119,19 @@ class SignUpVC: BaseViewController {
         if let confPassText = sender.text,
            !confPassText.isEmpty,
            let passText = passwordTF.text,
-           !passText.isEmpty
+           !passText.isEmpty, VerificationService.isPassConfirm(pass1: passText, pass2: confPassText)
         {
-            isConfPass = VerificationService.isPassConfirm(pass1: passText, pass2: confPassText)
+            isConfPass = true
+            errorConfPassLbl.isHidden = false
+            errorConfPassLbl.text = "Password is confirmed"
+            errorConfPassLbl.textColor = .green
 
         } else {
             isConfPass = false
+            errorConfPassLbl.isHidden = false
+            errorConfPassLbl.text = "Password is not confirmed"
+            errorConfPassLbl.textColor = .red
         }
-        errorConfPassLbl.isHidden = isConfPass
     }
 
     @IBAction func cofirmPassVisibleAction(_ sender: UISwitch) {
