@@ -12,10 +12,13 @@ class ProfileVC: BaseViewController {
 
     @IBOutlet var nameLbl: UILabel!
     @IBOutlet var emailLbl: UILabel!
+    @IBOutlet weak var deleteAccBtn: UIButton!
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
         nameLbl.text = userModel?.name ?? "Unknown"
         emailLbl.text = userModel?.email ?? ""
+        deleteAccBtn.layer.cornerRadius = 17.0
+        deleteAccBtn.layer.masksToBounds = true
     }
 
     @IBAction func logOutActionBtn(_ sender: UIButton) {

@@ -63,6 +63,8 @@ class VerificationsVC: BaseViewController {
     
     private func setupUI() {
         infoLbl.text = "Please enter code '\(randomInt)' from \(userModel?.email ?? "")"
+        codeTF.layer.cornerRadius = 17.0
+        codeTF.layer.masksToBounds = true
     }
     
     // MARK: - Navigation

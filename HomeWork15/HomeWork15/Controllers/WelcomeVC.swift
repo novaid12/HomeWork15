@@ -10,6 +10,7 @@ import UIKit
 class WelcomeVC: BaseViewController {
     @IBOutlet var infoLbl: UILabel!
 
+    @IBOutlet weak var continueBtn: UIButton!
     var userModel: UserModel?
 
     override func viewDidLoad() {
@@ -27,5 +28,7 @@ class WelcomeVC: BaseViewController {
 
     private func setupUI() {
         infoLbl.text = "\(userModel?.name ?? "") to our Cool App"
+        continueBtn.layer.cornerRadius = 17.0
+        continueBtn.layer.masksToBounds = true
     }
 }

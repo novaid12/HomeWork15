@@ -104,6 +104,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oJn-GF-Rya"/>
                     <connections>
+                        <outlet property="deleteAccBtn" destination="3nU-VE-ZHr" id="kLa-Xp-Yr1"/>
                         <outlet property="emailLbl" destination="XXW-bf-vEH" id="1KL-Bg-YFV"/>
                         <outlet property="nameLbl" destination="gWQ-Fr-xuV" id="mHC-fQ-xns"/>
                     </connections>

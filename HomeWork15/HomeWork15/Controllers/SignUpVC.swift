@@ -28,20 +28,37 @@ class SignUpVC: BaseViewController {
     /// scrollView
     @IBOutlet var scrollView: UIScrollView!
 
+    @IBOutlet weak var signInBtn: UIButton!
     private var isValidEmail = false { didSet { updateContinueBtnState() } }
     private var isConfPass = false { didSet { updateContinueBtnState() } }
     private var passwordStrength: PasswordStrength = .veryWeak { didSet { updateContinueBtnState() } }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        strongPassIndicatorsViews.forEach { view in view.alpha = 0.2 }
         hideKeyboardWhenTappedAround()
         startKeyboardObserver()
-        continueBtn.isEnabled = true
+        setupUI()
     }
 
     private func updateContinueBtnState() {
         continueBtn.isEnabled = isValidEmail && isConfPass && passwordStrength != .veryWeak
+    }
+    
+    func setupUI() {
+        emailTF.layer.cornerRadius = 17.0
+        emailTF.layer.masksToBounds = true
+        nameTF.layer.cornerRadius = 17.0
+        nameTF.layer.masksToBounds = true
+        passwordTF.layer.cornerRadius = 17.0
+        passwordTF.layer.masksToBounds = true
+        confPassTF.layer.cornerRadius = 17.0
+        confPassTF.layer.masksToBounds = true
+        continueBtn.layer.cornerRadius = 17.0
+        continueBtn.layer.masksToBounds = true
+        continueBtn.isEnabled = true
+        signInBtn.layer.cornerRadius = 17.0
+        signInBtn.layer.masksToBounds = true
+        strongPassIndicatorsViews.forEach { view in view.alpha = 0.2 }
     }
 
     private func startKeyboardObserver() {

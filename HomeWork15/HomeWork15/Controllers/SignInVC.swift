@@ -30,6 +30,12 @@ class SignInVC: BaseViewController {
         signInBtn.isEnabled = false
         errorLbl.isHidden = true
         navigationController?.navigationBar.isHidden = true
+        passTF.layer.cornerRadius = 17.0
+        passTF.layer.masksToBounds = true
+        emailTF.layer.cornerRadius = 17.0
+        emailTF.layer.masksToBounds = true
+        signInBtn.layer.cornerRadius = 17.0
+        signInBtn.layer.masksToBounds = true
     }
 
     private func updateSignInBtnState() {
