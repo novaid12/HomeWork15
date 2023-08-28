@@ -44,7 +44,7 @@ class SignUpVC: BaseViewController {
         continueBtn.isEnabled = isValidEmail && isConfPass && passwordStrength != .veryWeak
     }
     
-    func setupUI() {
+    private func setupUI() {
         emailTF.layer.cornerRadius = 17.0
         emailTF.layer.masksToBounds = true
         nameTF.layer.cornerRadius = 17.0

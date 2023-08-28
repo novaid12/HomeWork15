@@ -24,7 +24,6 @@ class ProfileVC: BaseViewController {
     @IBAction func logOutActionBtn(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
-
     @IBAction func deleteAccountActionBtn(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: userModel?.email ?? "")

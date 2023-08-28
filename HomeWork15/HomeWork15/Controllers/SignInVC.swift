@@ -22,8 +22,6 @@ class SignInVC: BaseViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setupUI()
-        emailTF.text = nil
-        passTF.text = nil
     }
 
     private func setupUI() {
@@ -71,6 +69,7 @@ class SignInVC: BaseViewController {
             guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
             mainVC.userModel = userModel
             show(mainVC, sender: nil)
+            errorLbl.isHidden = true
         } else { errorLbl.isHidden = false }
     }
 }
