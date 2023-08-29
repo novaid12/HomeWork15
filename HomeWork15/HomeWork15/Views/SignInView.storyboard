@@ -11,15 +11,16 @@
         <!--Sign InVC-->
         <scene sceneID="SEf-XO-kIE">
             <objects>
-                <viewController id="tXe-x7-Crl" customClass="SignInVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tXe-x7-Crl" customClass="SignInVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J8s-h1-86M">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9s-tZ-ZCd">
-                                <rect key="frame" x="228.66666666666663" y="127.99999999999999" width="176.33333333333337" height="34.333333333333329"/>
+                                <rect key="frame" x="355" y="127.99999999999999" width="50" height="34.333333333333329"/>
+                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Create new account"/>
+                                <buttonConfiguration key="configuration" style="plain" image="person.crop.circle.fill.badge.plus" catalog="system"/>
                                 <connections>
                                     <segue destination="9Mr-1z-rJW" kind="show" id="OjX-lJ-cay"/>
                                 </connections>
@@ -30,28 +31,51 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fw-Hn-wT1">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="40"/>
                                         <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="35"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Tb2-xg-rWZ">
                                         <rect key="frame" x="0.0" y="70" width="380" height="127.33333333333331"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-ff-Oy1">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please entry your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-ff-Oy1">
                                                 <rect key="frame" x="0.0" y="0.0" width="380" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="emailActionTF:" destination="tXe-x7-Crl" eventType="editingChanged" id="PH3-2I-he5"/>
+                                                </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-zb-3ae">
                                                 <rect key="frame" x="0.0" y="58.999999999999993" width="380" height="68.333333333333314"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjP-S6-Y92">
-                                                        <rect key="frame" x="0.0" y="0.0" width="380" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KqC-U0-Maa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="380" height="35"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please entry your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjP-S6-Y92">
+                                                                <rect key="frame" x="0.0" y="0.0" width="321" height="35"/>
+                                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                <connections>
+                                                                    <action selector="passActionTF:" destination="tXe-x7-Crl" eventType="editingChanged" id="QDp-lZ-hc9"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2a-7O-aTY">
+                                                                <rect key="frame" x="331" y="0.0" width="51" height="35"/>
+                                                                <connections>
+                                                                    <action selector="visibleActionSW:" destination="tXe-x7-Crl" eventType="valueChanged" id="DU4-aE-Ilu"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="mqZ-Px-QJu"/>
+                                                        </constraints>
+                                                    </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error email or password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-4E-xAe">
-                                                        <rect key="frame" x="0.0" y="48" width="380" height="20.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="49" width="380" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                                         <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -66,12 +90,18 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="xyZ-Wm-nSr"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sign In">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signInActionBtn:" destination="tXe-x7-Crl" eventType="touchUpInside" id="Vw8-6s-gbk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gPZ-5X-WED"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                         <constraints>
                             <constraint firstItem="gPZ-5X-WED" firstAttribute="trailing" secondItem="U9s-tZ-ZCd" secondAttribute="trailing" constant="25" id="7x2-Wp-QiL"/>
                             <constraint firstItem="JBm-6F-3Eh" firstAttribute="centerX" secondItem="gPZ-5X-WED" secondAttribute="centerX" id="AlG-9G-txZ"/>
@@ -85,15 +115,27 @@
                     </view>
                     <navigationItem key="navigationItem" id="VLa-ac-oIO"/>
                     <connections>
+                        <outlet property="centerYConstraint" destination="Au1-NZ-fLo" id="Ynu-C2-WN5"/>
                         <outlet property="emailTF" destination="fdb-ff-Oy1" id="pHh-ag-0ou"/>
                         <outlet property="errorLbl" destination="Nlf-4E-xAe" id="P85-RX-1rV"/>
                         <outlet property="passTF" destination="IjP-S6-Y92" id="hrV-uA-Idt"/>
                         <outlet property="signInBtn" destination="wsx-hn-vcq" id="aJ6-xM-49s"/>
+                        <segue destination="hfB-RH-lyL" kind="show" identifier="goToMainVC" id="fkT-Sh-rGW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrB-Cy-nG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1661.8604651162791" y="752.57510729613739"/>
+        </scene>
+        <!--MainAppView-->
+        <scene sceneID="ubR-75-UVZ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MainAppView" storyboardName="MainAppView" id="hfB-RH-lyL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="y3t-8w-juB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kwx-ud-KFm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2220" y="983"/>
         </scene>
         <!--SignUpView-->
         <scene sceneID="vzy-z1-Gfx">
@@ -103,7 +145,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAg-zx-RAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2579" y="645"/>
+            <point key="canvasLocation" x="2278" y="525"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nya-VT-7tK">
@@ -125,6 +167,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.crop.circle.fill.badge.plus" catalog="system" width="128" height="114"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

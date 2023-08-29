@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981992FA2A99F99B001646C7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981992F92A99F99B001646C7 /* UserModel.swift */; };
+		981992FD2A99F9C1001646C7 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981992FC2A99F9C1001646C7 /* VerificationService.swift */; };
+		981992FF2A99FA68001646C7 /* VerificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981992FE2A99FA68001646C7 /* VerificationsVC.swift */; };
+		981993012A99FA79001646C7 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981993002A99FA79001646C7 /* WelcomeVC.swift */; };
+		981993032A9A25E9001646C7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981993022A9A25E9001646C7 /* MainVC.swift */; };
+		981993052A9A4610001646C7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981993042A9A4610001646C7 /* ProfileVC.swift */; };
+		9819930B2A9A5D10001646C7 /* MainAppView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9819930A2A9A5D10001646C7 /* MainAppView.storyboard */; };
 		9878B6DE2A952D650094FC36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9878B6DD2A952D650094FC36 /* AppDelegate.swift */; };
 		9878B6E02A952D650094FC36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9878B6DF2A952D650094FC36 /* SceneDelegate.swift */; };
-		9878B6E52A952D650094FC36 /* MainAppView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9878B6E32A952D650094FC36 /* MainAppView.storyboard */; };
 		9878B6E72A952D660094FC36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9878B6E62A952D660094FC36 /* Assets.xcassets */; };
 		9878B6EA2A952D660094FC36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9878B6E82A952D660094FC36 /* LaunchScreen.storyboard */; };
 		9878B6F52A952DE80094FC36 /* SignInView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9878B6F42A952DE80094FC36 /* SignInView.storyboard */; };
@@ -20,10 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981992F92A99F99B001646C7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		981992FC2A99F9C1001646C7 /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
+		981992FE2A99FA68001646C7 /* VerificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationsVC.swift; sourceTree = "<group>"; };
+		981993002A99FA79001646C7 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		981993022A9A25E9001646C7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		981993042A9A4610001646C7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		9819930A2A9A5D10001646C7 /* MainAppView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainAppView.storyboard; sourceTree = "<group>"; };
 		9878B6DA2A952D650094FC36 /* HomeWork15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWork15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9878B6DD2A952D650094FC36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9878B6DF2A952D650094FC36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9878B6E42A952D650094FC36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainAppView.storyboard; sourceTree = "<group>"; };
 		9878B6E62A952D660094FC36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9878B6E92A952D660094FC36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9878B6EB2A952D660094FC36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		981992F82A99F98E001646C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				981992F92A99F99B001646C7 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		981992FB2A99F9A4001646C7 /* Sevices */ = {
+			isa = PBXGroup;
+			children = (
+				981992FC2A99F9C1001646C7 /* VerificationService.swift */,
+			);
+			name = Sevices;
+			sourceTree = "<group>";
+		};
 		9878B6D12A952D650094FC36 = {
 			isa = PBXGroup;
 			children = (
@@ -64,9 +92,11 @@
 		9878B6DC2A952D650094FC36 /* HomeWork15 */ = {
 			isa = PBXGroup;
 			children = (
+				981992F82A99F98E001646C7 /* Models */,
 				9878B6FC2A955DE90094FC36 /* Extensions */,
 				9878B6F32A952DAB0094FC36 /* Controllers */,
 				9878B6F22A952DA40094FC36 /* Views */,
+				981992FB2A99F9A4001646C7 /* Sevices */,
 				9878B6E62A952D660094FC36 /* Assets.xcassets */,
 				9878B6EB2A952D660094FC36 /* Info.plist */,
 				9878B6F12A952D910094FC36 /* App */,
@@ -89,7 +119,7 @@
 				9878B6E82A952D660094FC36 /* LaunchScreen.storyboard */,
 				9878B6F42A952DE80094FC36 /* SignInView.storyboard */,
 				9878B6F62A952DF50094FC36 /* SignUpView.storyboard */,
-				9878B6E32A952D650094FC36 /* MainAppView.storyboard */,
+				9819930A2A9A5D10001646C7 /* MainAppView.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,6 +129,10 @@
 			children = (
 				9878B6F82A95480B0094FC36 /* SignInVC.swift */,
 				9878B6FA2A9548210094FC36 /* SignUpVC.swift */,
+				981992FE2A99FA68001646C7 /* VerificationsVC.swift */,
+				981993002A99FA79001646C7 /* WelcomeVC.swift */,
+				981993022A9A25E9001646C7 /* MainVC.swift */,
+				981993042A9A4610001646C7 /* ProfileVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,8 +206,8 @@
 				9878B6EA2A952D660094FC36 /* LaunchScreen.storyboard in Resources */,
 				9878B6E72A952D660094FC36 /* Assets.xcassets in Resources */,
 				9878B6F72A952DF50094FC36 /* SignUpView.storyboard in Resources */,
-				9878B6E52A952D650094FC36 /* MainAppView.storyboard in Resources */,
 				9878B6F52A952DE80094FC36 /* SignInView.storyboard in Resources */,
+				9819930B2A9A5D10001646C7 /* MainAppView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,25 +218,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				981992FD2A99F9C1001646C7 /* VerificationService.swift in Sources */,
+				981993032A9A25E9001646C7 /* MainVC.swift in Sources */,
 				9878B6FE2A955E070094FC36 /* UIViewControllerExt.swift in Sources */,
 				9878B6FB2A9548210094FC36 /* SignUpVC.swift in Sources */,
 				9878B6DE2A952D650094FC36 /* AppDelegate.swift in Sources */,
 				9878B6E02A952D650094FC36 /* SceneDelegate.swift in Sources */,
+				981992FA2A99F99B001646C7 /* UserModel.swift in Sources */,
+				981993012A99FA79001646C7 /* WelcomeVC.swift in Sources */,
 				9878B6F92A95480B0094FC36 /* SignInVC.swift in Sources */,
+				981993052A9A4610001646C7 /* ProfileVC.swift in Sources */,
+				981992FF2A99FA68001646C7 /* VerificationsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9878B6E32A952D650094FC36 /* MainAppView.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9878B6E42A952D650094FC36 /* Base */,
-			);
-			name = MainAppView.storyboard;
-			sourceTree = "<group>";
-		};
 		9878B6E82A952D660094FC36 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

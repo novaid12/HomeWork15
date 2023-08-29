@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MainVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MainVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lt3-xV-sNN">
+                                <rect key="frame" x="303" y="74" width="75" height="35"/>
+                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="goToProfileVC:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kIM-hr-zPh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="lt3-xV-sNN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="Feo-tD-BaX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lt3-xV-sNN" secondAttribute="trailing" constant="15" id="um9-Wx-h92"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profileBtn" destination="lt3-xV-sNN" id="yIR-C9-fdp"/>
+                        <segue destination="KuX-SE-iwY" kind="show" identifier="goToProfileSegue" id="BK3-2t-lqa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-34"/>
+        </scene>
+        <!--ProfileVC-->
+        <scene sceneID="Mwt-jY-iZw">
+            <objects>
+                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KuX-SE-iwY" customClass="ProfileVC" customModule="HomeWork15" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zyP-wQ-2VR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="d8T-lI-3Pn">
+                                <rect key="frame" x="50" y="289" width="293" height="104"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Fr-xuV">
+                                        <rect key="frame" x="0.0" y="0.0" width="293" height="32"/>
+                                        <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="28"/>
+                                        <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXW-bf-vEH">
+                                        <rect key="frame" x="0.0" y="72" width="293" height="32"/>
+                                        <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="28"/>
+                                        <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nU-VE-ZHr">
+                                <rect key="frame" x="50" y="782.66666666666663" width="293" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Delete Account">
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteAccountActionBtn:" destination="KuX-SE-iwY" eventType="touchUpInside" id="ChY-OY-rEw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ben-ym-NQn">
+                                <rect key="frame" x="293.33333333333331" y="15.000000000000004" width="84.666666666666686" height="34.333333333333343"/>
+                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOutActionBtn:" destination="KuX-SE-iwY" eventType="touchUpInside" id="eCp-gb-a9v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EuH-Sx-ogB"/>
+                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="EuH-Sx-ogB" firstAttribute="bottom" secondItem="3nU-VE-ZHr" secondAttribute="bottom" constant="25" id="A9m-81-qAm"/>
+                            <constraint firstItem="d8T-lI-3Pn" firstAttribute="centerY" secondItem="EuH-Sx-ogB" secondAttribute="centerY" constant="-80" id="KLo-Pm-E1f"/>
+                            <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="d8T-lI-3Pn" secondAttribute="trailing" constant="50" id="MsA-Ux-YrE"/>
+                            <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="3nU-VE-ZHr" secondAttribute="trailing" constant="50" id="apN-g1-ZFW"/>
+                            <constraint firstItem="d8T-lI-3Pn" firstAttribute="centerX" secondItem="EuH-Sx-ogB" secondAttribute="centerX" id="hUX-xS-jUU"/>
+                            <constraint firstItem="d8T-lI-3Pn" firstAttribute="leading" secondItem="EuH-Sx-ogB" secondAttribute="leading" constant="50" id="mID-dG-Zjl"/>
+                            <constraint firstItem="ben-ym-NQn" firstAttribute="top" secondItem="EuH-Sx-ogB" secondAttribute="top" constant="15" id="meX-fC-eZl"/>
+                            <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="ben-ym-NQn" secondAttribute="trailing" constant="15" id="ot6-cW-usS"/>
+                            <constraint firstItem="3nU-VE-ZHr" firstAttribute="leading" secondItem="EuH-Sx-ogB" secondAttribute="leading" constant="50" id="vIg-K8-YJL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oJn-GF-Rya"/>
+                    <connections>
+                        <outlet property="deleteAccBtn" destination="3nU-VE-ZHr" id="kLa-Xp-Yr1"/>
+                        <outlet property="emailLbl" destination="XXW-bf-vEH" id="1KL-Bg-YFV"/>
+                        <outlet property="nameLbl" destination="gWQ-Fr-xuV" id="mHC-fQ-xns"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Khw-Cm-btU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="-30"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
