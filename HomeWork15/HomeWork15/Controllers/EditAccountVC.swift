@@ -65,6 +65,10 @@ class EditAccountVC: BaseViewController {
         saveBtn.layer.cornerRadius = 17.0
         saveBtn.layer.masksToBounds = true
         saveBtn.isEnabled = true
+        passwordTF.isEnabled = false
+        switchVisiblePass.isEnabled = false
+        confPassTF.isEnabled = false
+        cofirmVisiblePass.isEnabled = false
         strongPassIndicatorsViews.forEach { view in view.alpha = 0.2 }
     }
 
@@ -118,10 +122,18 @@ class EditAccountVC: BaseViewController {
             errorOldPassLbl.isHidden = false
             errorOldPassLbl.text = "Old pass is valid"
             errorOldPassLbl.textColor = .green
+            passwordTF.isEnabled = true
+            switchVisiblePass.isEnabled = true
+            confPassTF.isEnabled = true
+            cofirmVisiblePass.isEnabled = true
         } else {
             errorOldPassLbl.isHidden = false
             errorOldPassLbl.text = "Old pass is not valid"
             errorOldPassLbl.textColor = .red
+            passwordTF.isEnabled = false
+            switchVisiblePass.isEnabled = false
+            confPassTF.isEnabled = false
+            cofirmVisiblePass.isEnabled = false
         }
     }
 

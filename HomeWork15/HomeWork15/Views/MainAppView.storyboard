@@ -69,7 +69,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nU-VE-ZHr">
-                                <rect key="frame" x="50" y="862.66666666666663" width="330" height="34.333333333333371"/>
+                                <rect key="frame" x="25" y="862.66666666666663" width="380" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Delete Account">
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
@@ -106,12 +106,12 @@
                             <constraint firstItem="3zK-t3-jR9" firstAttribute="top" secondItem="EuH-Sx-ogB" secondAttribute="top" constant="25" id="JZt-7Z-y6D"/>
                             <constraint firstItem="d8T-lI-3Pn" firstAttribute="centerY" secondItem="EuH-Sx-ogB" secondAttribute="centerY" constant="-80" id="KLo-Pm-E1f"/>
                             <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="d8T-lI-3Pn" secondAttribute="trailing" constant="50" id="MsA-Ux-YrE"/>
-                            <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="3nU-VE-ZHr" secondAttribute="trailing" constant="50" id="apN-g1-ZFW"/>
+                            <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="3nU-VE-ZHr" secondAttribute="trailing" constant="25" id="apN-g1-ZFW"/>
                             <constraint firstItem="d8T-lI-3Pn" firstAttribute="centerX" secondItem="EuH-Sx-ogB" secondAttribute="centerX" id="hUX-xS-jUU"/>
                             <constraint firstItem="d8T-lI-3Pn" firstAttribute="leading" secondItem="EuH-Sx-ogB" secondAttribute="leading" constant="50" id="mID-dG-Zjl"/>
                             <constraint firstItem="ben-ym-NQn" firstAttribute="top" secondItem="EuH-Sx-ogB" secondAttribute="top" constant="15" id="meX-fC-eZl"/>
                             <constraint firstItem="EuH-Sx-ogB" firstAttribute="trailing" secondItem="ben-ym-NQn" secondAttribute="trailing" constant="15" id="ot6-cW-usS"/>
-                            <constraint firstItem="3nU-VE-ZHr" firstAttribute="leading" secondItem="EuH-Sx-ogB" secondAttribute="leading" constant="50" id="vIg-K8-YJL"/>
+                            <constraint firstItem="3nU-VE-ZHr" firstAttribute="leading" secondItem="EuH-Sx-ogB" secondAttribute="leading" constant="25" id="vIg-K8-YJL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oJn-GF-Rya"/>
@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Khw-Cm-btU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="850" y="-5"/>
+            <point key="canvasLocation" x="910" y="-28"/>
         </scene>
         <!--Edit AccountVC-->
         <scene sceneID="Vpv-9T-hvd">
@@ -412,7 +412,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsA-UI-1ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cBQ-5i-L83" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1668.8372093023256" y="-4.5064377682403434"/>
+            <point key="canvasLocation" x="1624" y="-28"/>
         </scene>
     </scenes>
     <resources>
