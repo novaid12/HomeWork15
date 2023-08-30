@@ -32,17 +32,26 @@ final class UserDefaultsService {
     static func authorizationUser() -> UserModel? {
         return UserDefaults.standard.authorization()
     }
-}
 
-// extension Employee: Codable {}
-//
-//// создадим кодировщик в jsonData
-// let jsonEncoder = JSONEncoder()
-//
-//// создадим дешифровщик в нашу модель
-// let jsonDecoder = JSONDecoder()
-// if let data = data,
-//   let someEmployee = try? jsonDecoder.decode(Employee.self, from: data)
-// {
-//    print(someEmployee)
-// }
+    static func editUserModel(userModelOld: UserModel, userModelNew: UserModel) -> UserModel? {
+        var name: String?
+        var email: String
+        var pass: String
+        if userModelOld.name != userModelNew.name {
+            name = userModelNew.name
+        } else if userModelNew.name == "" {
+            name = "Unknown"
+        } else { name = userModelOld.name }
+        if userModelOld.email != userModelNew.email {
+            email = userModelNew.email
+        } else { email = userModelOld.email }
+        if userModelOld.pass != userModelNew.pass, userModelNew.pass != "" {
+            pass = userModelNew.pass
+        } else { pass = userModelOld.pass }
+        UserDefaults.standard.removeObject(forKey: email)
+        UserDefaults.standard.removeObject(forKey: "authorization")
+        saveUserModel(userModel: UserModel(name: name, email: email, pass: pass))
+        UserDefaults.standard.set(email, forKey: "authorization")
+        return UserModel(name: name, email: email, pass: pass)
+    }
+}
