@@ -12,7 +12,7 @@ class ProfileVC: BaseViewController {
 
     @IBOutlet var nameLbl: UILabel!
     @IBOutlet var emailLbl: UILabel!
-    @IBOutlet weak var deleteAccBtn: UIButton!
+    @IBOutlet var deleteAccBtn: UIButton!
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
         nameLbl.text = userModel?.name ?? "Unknown"
@@ -22,11 +22,13 @@ class ProfileVC: BaseViewController {
     }
 
     @IBAction func logOutActionBtn(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "authorization")
         navigationController?.popToRootViewController(animated: true)
     }
+
     @IBAction func deleteAccountActionBtn(_ sender: UIButton) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.removeObject(forKey: userModel?.email ?? "")
+        guard let userModel = userModel else { return }
+        UserDefaultsService.cleanUserDefauts(email: userModel.email)
         navigationController?.popToRootViewController(animated: true)
     }
     /*

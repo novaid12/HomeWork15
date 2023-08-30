@@ -28,7 +28,7 @@ class SignUpVC: BaseViewController {
     /// scrollView
     @IBOutlet var scrollView: UIScrollView!
 
-    @IBOutlet weak var signInBtn: UIButton!
+    @IBOutlet var signInBtn: UIButton!
     private var isValidEmail = false { didSet { updateContinueBtnState() } }
     private var isConfPass = false { didSet { updateContinueBtnState() } }
     private var passwordStrength: PasswordStrength = .veryWeak { didSet { updateContinueBtnState() } }
@@ -43,7 +43,7 @@ class SignUpVC: BaseViewController {
     private func updateContinueBtnState() {
         continueBtn.isEnabled = isValidEmail && isConfPass && passwordStrength != .veryWeak
     }
-    
+
     private func setupUI() {
         emailTF.layer.cornerRadius = 17.0
         emailTF.layer.masksToBounds = true

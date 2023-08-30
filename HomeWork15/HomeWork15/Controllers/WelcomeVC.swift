@@ -10,7 +10,7 @@ import UIKit
 class WelcomeVC: BaseViewController {
     @IBOutlet var infoLbl: UILabel!
 
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet var continueBtn: UIButton!
     var userModel: UserModel?
 
     override func viewDidLoad() {
@@ -19,11 +19,9 @@ class WelcomeVC: BaseViewController {
     }
 
     @IBAction func continueAction() {
-        // TODO: sava data
+        guard let userModel = userModel else { return }
+        UserDefaultsService.saveUserModel(userModel: userModel)
         navigationController?.popToRootViewController(animated: true)
-        let data = [userModel?.name ?? "", userModel?.pass ?? ""]
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(data, forKey: userModel?.email ?? "")
     }
 
     private func setupUI() {
