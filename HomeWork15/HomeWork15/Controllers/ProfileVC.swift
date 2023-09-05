@@ -12,30 +12,35 @@ class ProfileVC: BaseViewController {
 
     @IBOutlet var nameLbl: UILabel!
     @IBOutlet var emailLbl: UILabel!
-    @IBOutlet weak var deleteAccBtn: UIButton!
+    @IBOutlet var deleteAccBtn: UIButton!
     override func viewDidLoad() {
-        navigationController?.navigationBar.isHidden = true
+        
         nameLbl.text = userModel?.name ?? "Unknown"
         emailLbl.text = userModel?.email ?? ""
         deleteAccBtn.layer.cornerRadius = 17.0
         deleteAccBtn.layer.masksToBounds = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
 
+    @IBAction func editBtn(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+        guard let editVC = storyboard.instantiateViewController(withIdentifier: "EditAccountVC") as? EditAccountVC else { return }
+        editVC.userModel = userModel
+        navigationController?.pushViewController(editVC, animated: true)
+    }
     @IBAction func logOutActionBtn(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "authorization")
         navigationController?.popToRootViewController(animated: true)
     }
-    @IBAction func deleteAccountActionBtn(_ sender: UIButton) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.removeObject(forKey: userModel?.email ?? "")
-        navigationController?.popToRootViewController(animated: true)
-    }
-    /*
-     // MARK: - Navigation
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func deleteAccountActionBtn(_ sender: UIButton) {
+        guard let userModel = userModel else { return }
+        UserDefaultsService.cleanUserDefauts(email: userModel.email)
+        UserDefaults.standard.removeObject(forKey: "authorization")
+        navigationController?.popToRootViewController(animated: true)
+    }
+
 }

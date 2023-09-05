@@ -15,19 +15,10 @@ class MainVC: BaseViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         profileBtn.setTitle("Hello, \(userModel?.name ?? "Unknown")", for: .normal)
-//        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
-//        guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-//        guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
-//        mainVC.userModel = userModel
-//        profileVC.userModel = userModel
-//        show(mainVC, sender: nil)
     }
 
     @IBAction func goToProfileVC(_ sender: UIButton) {
-//        let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
-//        guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
-//        profileVC.userModel = userModel
-//        show(profileVC, sender: nil)
+
         performSegue(withIdentifier: "goToProfileSegue", sender: userModel)
     }
 

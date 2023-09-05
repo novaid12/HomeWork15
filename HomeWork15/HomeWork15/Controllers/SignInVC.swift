@@ -22,6 +22,17 @@ class SignInVC: BaseViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setupUI()
+        if let userModel = UserDefaultsService.authorizationUser() {
+            let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+            guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
+            mainVC.userModel = userModel
+            navigationController?.pushViewController(mainVC, animated: true)
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        emailTF.text = ""
+        passTF.text = ""
     }
 
     private func setupUI() {
@@ -61,15 +72,19 @@ class SignInVC: BaseViewController {
     }
 
     @IBAction func signInActionBtn(_ sender: UIButton) {
-        let userDefaults = UserDefaults.standard
-        let signInModel = userDefaults.array(forKey: emailTF.text ?? "") as? [String] ?? []
-        if signInModel != [], passTF.text == signInModel[1] {
-            let userModel = UserModel(name: signInModel[0], email: emailTF.text ?? "", pass: signInModel[1])
+        if let email = emailTF.text,
+           let pass = passTF.text,
+           let userModel = UserDefaultsService.getUserModel(email: email, pass: pass)
+        {
             let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
             guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
             mainVC.userModel = userModel
-            show(mainVC, sender: nil)
+            navigationController?.pushViewController(mainVC, animated: true)
             errorLbl.isHidden = true
         } else { errorLbl.isHidden = false }
+    }
+
+    private func goToMainController() {
+        
     }
 }

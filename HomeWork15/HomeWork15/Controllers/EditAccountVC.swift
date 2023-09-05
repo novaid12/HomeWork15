@@ -1,19 +1,24 @@
 //
-//  SignUpVC.swift
+//  EditAccountVC.swift
 //  HomeWork15
 //
-//  Created by  NovA on 22.08.23.
+//  Created by  NovA on 30.08.23.
 //
 
 import UIKit
 
-class SignUpVC: BaseViewController {
+class EditAccountVC: BaseViewController {
+    var userModel: UserModel?
     /// email
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var errorEmailLbl: UILabel!
     /// name
     @IBOutlet var nameTF: UITextField!
-    /// password
+    /// old pass
+    @IBOutlet var oldPassTF: UITextField!
+    @IBOutlet var errorOldPassLbl: UILabel!
+    @IBOutlet var visibleOldPassSwitch: UISwitch!
+    /// new password
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var switchVisiblePass: UISwitch!
     @IBOutlet var errorPassLbl: UILabel!
@@ -23,41 +28,47 @@ class SignUpVC: BaseViewController {
     @IBOutlet var confPassTF: UITextField!
     @IBOutlet var cofirmVisiblePass: UISwitch!
     @IBOutlet var errorConfPassLbl: UILabel!
-    /// continueBtn
-    @IBOutlet var continueBtn: UIButton!
+    /// saveBtn
+    @IBOutlet var saveBtn: UIButton!
     /// scrollView
     @IBOutlet var scrollView: UIScrollView!
 
-    @IBOutlet var signInBtn: UIButton!
-    private var isValidEmail = false { didSet { updateContinueBtnState() } }
-    private var isConfPass = false { didSet { updateContinueBtnState() } }
-    private var passwordStrength: PasswordStrength = .veryWeak { didSet { updateContinueBtnState() } }
+    @IBOutlet var errorDataLbl: UILabel!
+    private var passwordStrength: PasswordStrength = .veryWeak
 
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         startKeyboardObserver()
         setupUI()
+
+        // Do any additional setup after loading the view.
     }
 
-    private func updateContinueBtnState() {
-        continueBtn.isEnabled = isValidEmail && isConfPass && passwordStrength != .veryWeak
+    override func viewWillAppear(_ animated: Bool) {
+        emailTF.text = userModel?.email
+        nameTF.text = userModel?.name
     }
 
     private func setupUI() {
+        navigationController?.navigationBar.isHidden = false
         emailTF.layer.cornerRadius = 17.0
         emailTF.layer.masksToBounds = true
         nameTF.layer.cornerRadius = 17.0
         nameTF.layer.masksToBounds = true
+        oldPassTF.layer.cornerRadius = 17.0
+        oldPassTF.layer.masksToBounds = true
         passwordTF.layer.cornerRadius = 17.0
         passwordTF.layer.masksToBounds = true
         confPassTF.layer.cornerRadius = 17.0
         confPassTF.layer.masksToBounds = true
-        continueBtn.layer.cornerRadius = 17.0
-        continueBtn.layer.masksToBounds = true
-        continueBtn.isEnabled = true
-        signInBtn.layer.cornerRadius = 17.0
-        signInBtn.layer.masksToBounds = true
+        saveBtn.layer.cornerRadius = 17.0
+        saveBtn.layer.masksToBounds = true
+        saveBtn.isEnabled = true
+        passwordTF.isEnabled = false
+        switchVisiblePass.isEnabled = false
+        confPassTF.isEnabled = false
+        cofirmVisiblePass.isEnabled = false
         strongPassIndicatorsViews.forEach { view in view.alpha = 0.2 }
     }
 
@@ -81,21 +92,15 @@ class SignUpVC: BaseViewController {
         scrollView.scrollIndicatorInsets = contentInsets
     }
 
-    @IBAction func backSignInBtn() {
-        navigationController?.popViewController(animated: true)
-    }
-
     @IBAction func emailActionTF(_ sender: UITextField) {
         if let email = sender.text,
            !email.isEmpty,
            VerificationService.isValidEmail(email: email)
         {
-            isValidEmail = true
             errorEmailLbl.isHidden = false
             errorEmailLbl.text = "Email is Valid!"
             errorEmailLbl.textColor = .green
         } else {
-            isValidEmail = false
             errorEmailLbl.isHidden = false
             errorEmailLbl.text = "Error: bad email"
             errorEmailLbl.textColor = .red
@@ -109,6 +114,26 @@ class SignUpVC: BaseViewController {
             } else {
                 view.alpha = 0.2
             }
+        }
+    }
+
+    @IBAction func oldPassAction(_ sender: UITextField) {
+        if userModel?.pass == oldPassTF.text {
+            errorOldPassLbl.isHidden = false
+            errorOldPassLbl.text = "Old pass is valid"
+            errorOldPassLbl.textColor = .green
+            passwordTF.isEnabled = true
+            switchVisiblePass.isEnabled = true
+            confPassTF.isEnabled = true
+            cofirmVisiblePass.isEnabled = true
+        } else {
+            errorOldPassLbl.isHidden = false
+            errorOldPassLbl.text = "Old pass is not valid"
+            errorOldPassLbl.textColor = .red
+            passwordTF.isEnabled = false
+            switchVisiblePass.isEnabled = false
+            confPassTF.isEnabled = false
+            cofirmVisiblePass.isEnabled = false
         }
     }
 
@@ -126,10 +151,22 @@ class SignUpVC: BaseViewController {
         setupStrongIndicatorsViews()
     }
 
-    @IBAction func visiblePassAction(_ sender: UISwitch) {
+    @IBAction func visibleOldPassAction(_ sender: UISwitch) {
+        if sender.isOn {
+            oldPassTF.isSecureTextEntry = true
+        } else { oldPassTF.isSecureTextEntry = false }
+    }
+
+    @IBAction func visibleNewPassAction(_ sender: UISwitch) {
         if sender.isOn {
             passwordTF.isSecureTextEntry = true
         } else { passwordTF.isSecureTextEntry = false }
+    }
+
+    @IBAction func visibleCobfirmPassAction(_ sender: UISwitch) {
+        if sender.isOn {
+            confPassTF.isSecureTextEntry = true
+        } else { confPassTF.isSecureTextEntry = false }
     }
 
     @IBAction func cofirmPassActionTF(_ sender: UITextField) {
@@ -138,37 +175,28 @@ class SignUpVC: BaseViewController {
            let passText = passwordTF.text,
            !passText.isEmpty, VerificationService.isPassConfirm(pass1: passText, pass2: confPassText)
         {
-            isConfPass = true
             errorConfPassLbl.isHidden = false
             errorConfPassLbl.text = "Password is confirmed"
             errorConfPassLbl.textColor = .green
 
         } else {
-            isConfPass = false
             errorConfPassLbl.isHidden = false
             errorConfPassLbl.text = "Password is not confirmed"
             errorConfPassLbl.textColor = .red
         }
     }
 
-    @IBAction func cofirmPassVisibleAction(_ sender: UISwitch) {
-        if sender.isOn {
-            confPassTF.isSecureTextEntry = true
-        } else { confPassTF.isSecureTextEntry = false }
-    }
-
-    @IBAction func continueActionTF(_ sender: UIButton) {
+    @IBAction func saveActionBtn(_ sender: UIButton) {
         if let email = emailTF.text,
-           let pass = passwordTF.text
+           let pass = confPassTF.text,
+           let name = nameTF.text,
+           let userModelOld = userModel
         {
-            let userModel = UserModel(name: nameTF.text, email: email, pass: pass)
-            performSegue(withIdentifier: "goToVerifScreen", sender: userModel)
+            let userModelNew = UserModel(name: name, email: email, pass: pass)
+            let storyboard = UIStoryboard(name: "MainAppView", bundle: nil)
+            guard let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else { return }
+            profileVC.userModel = UserDefaultsService.editUserModel(userModelOld: userModelOld, userModelNew: userModelNew)
+            navigationController?.pushViewController(profileVC, animated: true)
         }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destVC = segue.destination as? VerificationsVC,
-              let userModel = sender as? UserModel else { return }
-        destVC.userModel = userModel
     }
 }

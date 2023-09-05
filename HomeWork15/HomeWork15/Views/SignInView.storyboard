@@ -22,11 +22,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="person.crop.circle.fill.badge.plus" catalog="system"/>
                                 <connections>
-                                    <segue destination="9Mr-1z-rJW" kind="show" id="OjX-lJ-cay"/>
+                                    <segue destination="9Mr-1z-rJW" kind="show" id="Iyn-FO-gn0"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JBm-6F-3Eh">
-                                <rect key="frame" x="25" y="322" width="380" height="197.33333333333337"/>
+                                <rect key="frame" x="25" y="302" width="380" height="197.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fw-Hn-wT1">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="40"/>
@@ -86,10 +86,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsx-hn-vcq">
-                                <rect key="frame" x="160" y="813.66666666666663" width="110" height="34.333333333333371"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="xyZ-Wm-nSr"/>
-                                </constraints>
+                                <rect key="frame" x="25" y="838.66666666666663" width="380" height="34.333333333333371"/>
                                 <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In">
@@ -103,19 +100,20 @@
                         <viewLayoutGuide key="safeArea" id="gPZ-5X-WED"/>
                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                         <constraints>
-                            <constraint firstItem="gPZ-5X-WED" firstAttribute="trailing" secondItem="U9s-tZ-ZCd" secondAttribute="trailing" constant="25" id="7x2-Wp-QiL"/>
-                            <constraint firstItem="JBm-6F-3Eh" firstAttribute="centerX" secondItem="gPZ-5X-WED" secondAttribute="centerX" id="AlG-9G-txZ"/>
-                            <constraint firstItem="JBm-6F-3Eh" firstAttribute="centerY" secondItem="gPZ-5X-WED" secondAttribute="centerY" constant="-80" id="Au1-NZ-fLo"/>
-                            <constraint firstItem="JBm-6F-3Eh" firstAttribute="leading" secondItem="gPZ-5X-WED" secondAttribute="leading" constant="25" id="GTk-EX-yCG"/>
-                            <constraint firstItem="wsx-hn-vcq" firstAttribute="centerX" secondItem="gPZ-5X-WED" secondAttribute="centerX" id="dbN-Oc-Ga7"/>
-                            <constraint firstItem="gPZ-5X-WED" firstAttribute="bottom" secondItem="wsx-hn-vcq" secondAttribute="bottom" constant="50" id="k4t-s4-afx"/>
-                            <constraint firstItem="U9s-tZ-ZCd" firstAttribute="top" secondItem="gPZ-5X-WED" secondAttribute="top" constant="25" id="mWk-MC-WcP"/>
-                            <constraint firstItem="gPZ-5X-WED" firstAttribute="trailing" secondItem="JBm-6F-3Eh" secondAttribute="trailing" constant="25" id="uOe-5Y-auL"/>
+                            <constraint firstItem="wsx-hn-vcq" firstAttribute="leading" secondItem="gPZ-5X-WED" secondAttribute="leading" constant="25" id="23V-dM-CmD"/>
+                            <constraint firstItem="U9s-tZ-ZCd" firstAttribute="top" secondItem="gPZ-5X-WED" secondAttribute="top" constant="25" id="5SB-In-rB6"/>
+                            <constraint firstItem="gPZ-5X-WED" firstAttribute="trailing" secondItem="wsx-hn-vcq" secondAttribute="trailing" constant="25" id="6BM-qM-qRa"/>
+                            <constraint firstItem="gPZ-5X-WED" firstAttribute="trailing" secondItem="U9s-tZ-ZCd" secondAttribute="trailing" constant="25" id="GxO-OR-YPx"/>
+                            <constraint firstItem="JBm-6F-3Eh" firstAttribute="centerY" secondItem="gPZ-5X-WED" secondAttribute="centerY" constant="-100" id="PIl-zx-VFO"/>
+                            <constraint firstItem="JBm-6F-3Eh" firstAttribute="leading" secondItem="gPZ-5X-WED" secondAttribute="leading" constant="25" id="U1A-8d-0j9"/>
+                            <constraint firstItem="JBm-6F-3Eh" firstAttribute="centerX" secondItem="gPZ-5X-WED" secondAttribute="centerX" id="cKD-7A-Oel"/>
+                            <constraint firstItem="wsx-hn-vcq" firstAttribute="centerX" secondItem="gPZ-5X-WED" secondAttribute="centerX" id="fZ0-kD-qdr"/>
+                            <constraint firstItem="gPZ-5X-WED" firstAttribute="trailing" secondItem="JBm-6F-3Eh" secondAttribute="trailing" constant="25" id="y5k-eK-C22"/>
+                            <constraint firstItem="gPZ-5X-WED" firstAttribute="bottom" secondItem="wsx-hn-vcq" secondAttribute="bottom" constant="25" id="ylj-sP-M2Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VLa-ac-oIO"/>
                     <connections>
-                        <outlet property="centerYConstraint" destination="Au1-NZ-fLo" id="Ynu-C2-WN5"/>
                         <outlet property="emailTF" destination="fdb-ff-Oy1" id="pHh-ag-0ou"/>
                         <outlet property="errorLbl" destination="Nlf-4E-xAe" id="P85-RX-1rV"/>
                         <outlet property="passTF" destination="IjP-S6-Y92" id="hrV-uA-Idt"/>
